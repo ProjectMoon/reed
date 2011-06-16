@@ -37,10 +37,10 @@ use it thus:
 
 ```js
 var reed = require("reed");
-reed.open(); //looks for .md files in "." by default.
+reed.open("."); //looks for .md files in current directory.
 
 reed.index(function() {
-	reed.list(function(posts) {
+	reed.list(function(err, posts) {
 		console.log(posts);
 		reed.close();
 	});

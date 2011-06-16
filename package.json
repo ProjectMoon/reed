@@ -4,7 +4,7 @@
   "email": "rei@thermetics.net",
   "description": "redis + markdown blogging core",
   "tags": [ "redis", "blog" ],
-  "version": "0.0.2",
+  "version": "0.0.3",
   "homepage": "http://www.agnos.is/",
   "repository": {
     "url": "git://github.com/ProjectMoon/reed.git"
