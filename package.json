@@ -1,0 +1,18 @@
+{
+  "author": "projectmoon (http://www.agnos.is/)",
+  "name": "reed",
+  "description": "redis + markdown blogging core",
+  "version": "0.0.1",
+  "homepage": "http://www.agnos.is/",
+  "repository": {
+    "url": ""
+  },
+  "engines": {
+    "node": ">= 0.4.0"
+  },
+  "dependencies": {
+    "redis": "",
+    "node-markdown": ""
+  },
+  "devDependencies": {}
+}
