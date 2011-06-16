@@ -5,7 +5,7 @@
   "version": "0.0.1",
   "homepage": "http://www.agnos.is/",
   "repository": {
-    "url": ""
+    "url": "git://github.com/ProjectMoon/reed.git"
   },
   "engines": {
     "node": ">= 0.4.0"
@@ -13,7 +13,7 @@
   "directories": {
     "lib": "./lib"
   },
-  "main": "./lib/reed",
+  "main": "./lib/reed.js",
   "dependencies": {
     "redis": "",
     "node-markdown": ""
