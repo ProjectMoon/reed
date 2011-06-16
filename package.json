@@ -19,7 +19,8 @@
   "main": "./lib/reed.js",
   "dependencies": {
     "redis": "",
-    "node-markdown": ""
+    "node-markdown": "",
+    "async": ""
   },
   "devDependencies": {}
 }
