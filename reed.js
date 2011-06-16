@@ -22,6 +22,7 @@ function redisInsert(key, date, processedData, post, callback) {
 	});
 }
 
+//taken from wheat -- MIT license
 function preProcess(markdown) {
 	if (!(typeof markdown === 'string')) {
 		markdown = markdown.toString();
