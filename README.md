@@ -28,11 +28,13 @@ flexibility.
 How to use reed
 ----------------
 First, install it:
+
 `npm install reed`
 
 Make sure Redis is also installed and running. Currently, reed only supports the
 basic (non-authenticated) model for Redis. After Redis and reed are installed,
 use it thus:
+
 ```js
 var reed = require("reed");
 reed.open(); //looks for .md files in "." by default.
@@ -52,6 +54,7 @@ modified date).
 
 To retrieve an individual post and its associated metadata, use the `get`
 function:
+
 ```js
 reed.get("First Post", function(err, metadata, htmlContent) {
 	console.log(JSON.stringify(metadata);
@@ -87,6 +90,7 @@ These take the form of simple headers. They are transferred into the metadata
 object as properties.
 
 the-first-post.md:
+
 ```
 Title: The First Post
 Author: me
