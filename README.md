@@ -1,20 +1,18 @@
 reed
 ====
 
-A Markdown-based blogging core backed by Redis and the filesystem.
+A Markdown-based blogging and website core backed by Redis and the
+filesystem.
 
 Features:
 
 * Asynchronously turn all markdown (.md) files in a directory into a blog
   stored in the hyper-fast Redis database.
+* Turn all markdown files in a (separate) directory into static pages.
 * Files are watched for changes and the Redis store is automagically updated.
 * Transparently access Redis or the filesystem to find a blog post.
 * Markdown metadata to describe your blog posts.
 * Fully event-based programming paradigm.
-
-In the works:
-
-* Comments
 
 What is reed?
 -------------
@@ -150,3 +148,32 @@ Reed exposes the following events:
   is not running are currently considered `add` events.
 * `update`: Fired when a blog post is updated while reed is running. Note; posts
   updated while reed is not running are currently considered `add` events.
+
+Pages
+-----
+Reed 0.9 introduces pages functionality. This operates similarly to the blog
+functionality. Each page is a markdown file in a specified directory, and
+all pages are automatically watched for updates. The main difference is that
+reed does not care about when a page was last updated.
+
+This functionality is useful for static pages on a website.
+
+The pages API is contained within the `pages` namespace:
+
+* `pages.open(dir)`: Opens the given path for reed pages. This directory should
+  be separate from the blog directory. Calling open() more than once will cause
+  it to throw an error.
+* `pages.get(title)`: Attempts to find the page with the given title. The
+  callback receives `error`, `metadata`, and `htmlContent`, as in the regular
+  `get` method.
+  
+More pages API functionality is in the works, such as listing page titles and
+retrieving metadata.
+
+The pages API exposes the following events:
+
+* `error`: Fired when there is an error in certain internal procedures. Usually,
+  inspecting the error object of a callback will be sufficient.
+* `pagesReady`: Fired when the `open` call has completed.
+* `addPage`: Fired when a new page is added to Redis.
+* `updatePage`: Fired when a page is updated.
