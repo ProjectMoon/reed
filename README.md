@@ -109,8 +109,8 @@ The headers will be accessible thus:
 Field names can only alphabetical characters. So, "Some-Other-Field" is not a
 valid article header.
 
-API
----
+Blog API
+--------
 Reed exposes the following functions:
 
 * `open(dir)`: Opens the given path for reed. When first opened, reed will scan
@@ -134,6 +134,9 @@ Reed exposes the following functions:
   usually not be necessary, as reed should automatically take care of posts
   being added and updated. The callback receives `error` if indexing was
   prematurely interrupted by an error.
+* `refresh()`: Forces a refresh of the Redis index, removing any entries that
+  are no longer present on the filesystem. This should usually not be necessary,
+  as reed should handle this internally.
   
 **Note**: `get`, `list`, `index`, `remove`, and `removeAll` asynchronously
 block until reed is in a ready state. This means they can be called before
@@ -142,21 +145,41 @@ block until reed is in a ready state. This means they can be called before
 Reed exposes the following events:
 
 * `error`: Fired when there is an error in certain internal procedures. Usually,
-  inspecting the error object of a callback will be sufficient.
+  inspecting the error object of callbacks is sufficient.
 * `ready`: Fired when reed has loaded.
 * `add`: Fired when a post is added to the blog. Note: posts updated while reed
   is not running are currently considered `add` events.
-* `update`: Fired when a blog post is updated while reed is running. Note; posts
+* `update`: Fired when a blog post is updated while reed is running. Note: posts
   updated while reed is not running are currently considered `add` events.
+* `remove`: Fired when a blog post is removed (from the filesystem, through an
+  API call, etc). The callback receives the full path of the file that was
+  removed.
 
-Pages
------
+Pages API
+---------
 Reed 0.9 introduces pages functionality. This operates similarly to the blog
 functionality. Each page is a markdown file in a specified directory, and
 all pages are automatically watched for updates. The main difference is that
 reed does not care about when a page was last updated.
 
-This functionality is useful for static pages on a website.
+This functionality is useful for static pages on a website. A simple example,
+using [Express](http://www.expressjs.com) to send the HTML of a reed page to
+a user:
+
+```javascript
+app.get('/pages/:page', function(req, res) {
+	reed.pages.get(req.params.page, function(err, metadata, htmlContent) {
+		//In a real scenario, you should use a view
+		//and make use of the metadata object.
+		if (err) {
+			res.send('There was an error: ' + JSON.stringify(err));
+		}
+		else {
+			res.send(htmlContent);
+		}
+	});
+});
+```
 
 The pages API is contained within the `pages` namespace:
 
@@ -166,14 +189,9 @@ The pages API is contained within the `pages` namespace:
 * `pages.get(title)`: Attempts to find the page with the given title. The
   callback receives `error`, `metadata`, and `htmlContent`, as in the regular
   `get` method.
-  
-More pages API functionality is in the works, such as listing page titles and
-retrieving metadata.
 
 The pages API exposes the following events:
 
-* `error`: Fired when there is an error in certain internal procedures. Usually,
-  inspecting the error object of a callback will be sufficient.
 * `pagesReady`: Fired when the `open` call has completed.
 * `addPage`: Fired when a new page is added to Redis.
 * `updatePage`: Fired when a page is updated.
