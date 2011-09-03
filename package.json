@@ -1,10 +1,10 @@
 {
-  "author": "projectmoon (http://www.agnos.is/)",
+  "author": "ProjectMoon",
   "name": "reed",
   "email": "rei@thermetics.net",
   "description": "Redis + markdown blogging/website core",
   "tags": [ "redis", "blog" ],
-  "version": "0.9.2-1",
+  "version": "0.9.2-2",
   "homepage": "http://www.agnos.is/",
   "repository": {
     "type": "git",
