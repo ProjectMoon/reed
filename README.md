@@ -127,6 +127,9 @@ Reed exposes the following functions:
   .md files, and clears up state.
 * `get(id, callback)`: Retrieves a blog post. The callback receives `error`,
   `metadata`, and `htmlContent`.
+* `all(callback)`: Retrieves all blog posts. The callback receives `error` and
+  `posts`, which is a list of post objects, each containing `metadata` and
+   `htmlContent` properties.
 * `getMetadata(id, callback)`: Retrieves only the metadata for a blog post. The
   callback receives `error` (if there was an error), and `metadata`, an object
   containing the metadata from the blog post.
