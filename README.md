@@ -14,6 +14,11 @@ Features:
 * Markdown metadata to describe your blog posts.
 * Fully event-based programming paradigm.
 
+What reed does not do:
+
+* Comments. Use a system like Disqus or roll your own. Comments might be added
+  as a separate library later.
+
 What is reed?
 -------------
 Reed is a (very) lightweight blogging **core** that turns markdown files in a
