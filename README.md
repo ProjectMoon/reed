@@ -93,9 +93,9 @@ These ids are case sensitive, so The-First-Post.md is different than
 the-first-post.md.
 
 #### Metadata ####
-Like Wheat, articles support user-defined metadata at the top of the article.
-These take the form of simple headers. They are transferred into the metadata
-object as properties.
+Similar to  Wheat, articles support user-defined metadata at the top of the
+article. These take the form of simple headers. They are transferred into the
+metadata object as properties.
 
 the-first-post.md:
 
@@ -109,10 +109,13 @@ The headers will be accessible thus:
 
 * metadata.title
 * metadata.author
-* metadata.someotherfield
+* metadata.someOtherField
 
 Field names can only alphabetical characters. So, "Some-Other-Field" is not a
 valid article header.
+
+Note: starting in 0.9.3, metadata fields are camelCase, rather than all lower
+case.
 
 Blog API
 --------
