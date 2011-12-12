@@ -211,7 +211,7 @@ Contributors
 ============
 These people have contributed to the development of reed in some way or another:
 
-* [ProjectMoon](https;//github.com/ProjectMoon): primary author.
+* [ProjectMoon](https://github.com/ProjectMoon): primary author.
 * [algesten](https://github.com/algesten): bug fixes.
 
 License
