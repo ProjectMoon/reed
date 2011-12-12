@@ -56,6 +56,8 @@ indexed into the Redis database by the `index` function. After having indexed
 them, we can `list` the titles in order of post/updated date (that is, last
 modified date).
 
+Configuration
+-------------
 Reed can connect to Redis running on separate hosts, non-standard
 ports or using authentication. This requires the use of the
 `configure` function before calling `open`.
@@ -82,9 +84,10 @@ reed.open("."); //looks for .md files in current directory.
 ```
 
 Any property not overridden in the configuration object will use the
-Redis defaults. This means it is possible to override, say, just
-the port.
+Redis defaults. For example, it is possible to override just the port.
 
+Retrieving Posts
+----------------
 To retrieve an individual post and its associated metadata, use the `get`
 function:
 
@@ -200,6 +203,9 @@ Reed exposes the following events:
 
 Pages API
 ---------
+*Note*: There is a known issue that prevents Pages from working if the blog
+portion of reed is not opened first. This will be fixed soon.
+
 Reed 0.9 introduces pages functionality. This operates similarly to the blog
 functionality. Each page is a markdown file in a specified directory, and
 all pages are automatically watched for updates. The main difference is that
