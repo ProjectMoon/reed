@@ -36,9 +36,8 @@ First, install it:
 
 `npm install reed`
 
-Make sure Redis 2.2 or greater is also installed and running. Currently, reed
-only supports the basic (non-authenticated) model for Redis. After Redis and
-reed are installed, use it thus:
+Make sure Redis 2.2 or greater is also installed and running. After
+Redis and reed are installed, use it thus:
 
 ```js
 var reed = require("reed");
@@ -56,6 +55,35 @@ In the above example, .md files will be pulled out of the current directory and
 indexed into the Redis database by the `index` function. After having indexed
 them, we can `list` the titles in order of post/updated date (that is, last
 modified date).
+
+Reed can connect to Redis running on separate hosts, non-standard
+ports or using authentication. This requires the use of the
+`configure` function before calling `open`.
+
+```js
+var reed = require("reed");
+
+//configure reed to connect to another redis
+//must be done *before* reed.open()
+reed.configure({
+    host: 'some.other.host.org',
+    port: 1337,
+    password: '15qe93rktkf39i4'
+});
+
+reed.on("ready", function() {
+	//ready.
+	reed.get("a post", function(err, metadata, html) {
+		//you have a post.
+	});
+});
+
+reed.open("."); //looks for .md files in current directory.
+```
+
+Any property not overridden in the configuration object will use the
+Redis defaults. This means it is possible to override, say, just
+the port.
 
 To retrieve an individual post and its associated metadata, use the `get`
 function:
@@ -121,6 +149,10 @@ Blog API
 --------
 Reed exposes the following functions:
 
+* `configure(options)`: Configures reed. The options object can be
+  used to specify connection settings for Redis. Supported settings
+  are `host`, `port` and `password`. Any such configuration must be done
+  *before* calling `open`.
 * `open(dir)`: Opens the given path for reed. When first opened, reed will scan
   the directory for .md files and add them to redis.
 * `close()`: Closes reed, shuts down the Redis connection, stops watching all
@@ -212,7 +244,7 @@ Contributors
 These people have contributed to the development of reed in some way or another:
 
 * [ProjectMoon](https://github.com/ProjectMoon): primary author.
-* [algesten](https://github.com/algesten): bug fixes.
+* [algesten](https://github.com/algesten): bug fixes and redis conf.
 
 License
 =======
