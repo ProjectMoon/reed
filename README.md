@@ -206,3 +206,14 @@ The pages API exposes the following events:
 * `pagesReady`: Fired when the `open` call has completed.
 * `addPage`: Fired when a new page is added to Redis.
 * `updatePage`: Fired when a page is updated.
+
+Contributors
+============
+These people have contributed to the development of reed in some way or another:
+
+* [ProjectMoon](https;//github.com/ProjectMoon): primary author.
+* [algesten](https://github.com/algesten): bug fixes.
+
+License
+=======
+MIT License. Detailed in the LICENSE file.
