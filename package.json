@@ -22,5 +22,7 @@
     "node-markdown": "",
     "async": ""
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "vows": ""
+  }
 }
