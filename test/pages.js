@@ -128,6 +128,14 @@ vows.describe('Pages System').addBatch({
 							assert.isUndefined(metadata);
 						}
 					}
+				},
+				
+				'close pages': {
+					topic: function() {
+						//simply here to make sure it doesn't hang or throw
+						//exceptions.
+						reed.pages.close();
+					}
 				}
 			}
 		}
