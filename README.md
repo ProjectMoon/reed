@@ -203,13 +203,11 @@ Reed exposes the following events:
 
 Pages API
 ---------
-*Note*: There is a known issue that prevents Pages from working if the blog
-portion of reed is not opened first. This will be fixed soon.
-
 Reed 0.9 introduces pages functionality. This operates similarly to the blog
-functionality. Each page is a markdown file in a specified directory, and
-all pages are automatically watched for updates. The main difference is that
-reed does not care about when a page was last updated.
+functionality. Each page is a markdown file in a specified directory. The main
+difference is that the pages API is not indexed like blog posts are. There
+are no events exposed by the pages API, and there is no way to get a list of
+all pages in the system.
 
 This functionality is useful for static pages on a website. A simple example,
 using [Express](http://www.expressjs.com) to send the HTML of a reed page to
@@ -232,18 +230,16 @@ app.get('/pages/:page', function(req, res) {
 
 The pages API is contained within the `pages` namespace:
 
-* `pages.open(dir)`: Opens the given path for reed pages. This directory should
-  be separate from the blog directory. Calling open() more than once will cause
-  it to throw an error.
-* `pages.get(title)`: Attempts to find the page with the given title. The
-  callback receives `error`, `metadata`, and `htmlContent`, as in the regular
-  `get` method.
-
-The pages API exposes the following events:
-
-* `pagesReady`: Fired when the `open` call has completed.
-* `addPage`: Fired when a new page is added to Redis.
-* `updatePage`: Fired when a page is updated.
+* `pages.open(dir, callback)`: Opens the given path for reed pages. This
+  directory should be separate from the blog directory. Calling open()
+  more than once will cause it to throw an error. The callback is called once
+  the page system is running.
+* `pages.get(title, callback)`: Attempts to find the page with the given title.
+  The  callback receives `error`, `metadata`, and `htmlContent`, as in the
+  regular `get` method.
+* `pages.remove(title, callback)`: Removes the specified page, deleting it from
+  Redis and the filesystem.
+* `pages.close()`: Closes the pages portion of reed.
 
 Contributors
 ============
