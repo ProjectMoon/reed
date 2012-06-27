@@ -20,7 +20,8 @@
   "dependencies": {
     "redis": "",
     "node-markdown": "",
-    "async": ""
+    "async": "",
+    "hound": ""
   },
   "devDependencies": {
     "vows": ""
