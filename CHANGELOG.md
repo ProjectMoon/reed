@@ -5,11 +5,12 @@
   and organized.
   * New architecture: reed -> APIs -> redis connector/filesystem helper/file
     processor.
+* No more blocking code in the library (not necessarily dependencies).
 * Articles no longer need to have dashes in the filename.
 * Reed will now watch files that end in ".markdown" as well as ".md".
 * Reed now properly detects file additions, updates, and removals that happened
   while it was not running.
-* Index and refresh methods deprecated. They can still be called but will only
+* `reed.index` and `reed.refresh` methods deprecated. They can still be called but will only
   emit a warning. They will be removed in the next version.
 * `reed.removeAll` method is now atomic (Redis MULTI).
 * Method blocking is now much more efficient by using a queue instead of what
