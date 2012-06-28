@@ -1,3 +1,10 @@
+1.0.0
+=====
+
+* Ground up rewrite for maintainability, readability, and reliability:
+  * New architecture: reed -> APIs -> redis connector/filesystem helper/file processor.
+* Behavior changes:
+
 0.9.8
 =====
 
