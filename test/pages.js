@@ -114,7 +114,7 @@ vows.describe('Pages System').addBatch({
 					},
 					
 					'no longer on filesystem': function(err) {
-						assert.isFalse(path.existsSync(dir + 'newpage.md'));
+						assert.isFalse(fs.existsSync(dir + 'newpage.md'));
 					},
 					
 					'check removed from reed': {
