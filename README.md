@@ -176,13 +176,6 @@ Reed exposes the following functions:
 * `removeAll(callback)`: Removes all blog posts. The callback is called after
   all posts have been deleted, and receives `error` if there was an error during
   deletion. **This deletion is not transactional!**
-* `index(callback)`: Forces a full refresh of the opened directory. This should
-  usually not be necessary, as reed should automatically take care of posts
-  being added and updated. The callback receives `error` if indexing was
-  prematurely interrupted by an error.
-* `refresh()`: Forces a refresh of the Redis index, removing any entries that
-  are no longer present on the filesystem. This should usually not be necessary,
-  as reed should handle this internally.
   
 **Note**: `get`, `list`, `index`, `remove`, and `removeAll` asynchronously
 block until reed is in a ready state. This means they can be called before

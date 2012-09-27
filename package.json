@@ -4,14 +4,14 @@
   "email": "rei@thermetics.net",
   "description": "Redis + markdown blogging/website core",
   "tags": [ "redis", "blog" ],
-  "version": "0.9.8",
+  "version": "1.0.0",
   "homepage": "http://www.agnos.is/",
   "repository": {
     "type": "git",
     "url": "git://github.com/ProjectMoon/reed.git"
   },
   "engines": {
-    "node": ">= 0.4.0"
+    "node": ">= 0.8.0"
   },
   "directories": {
     "lib": "./lib"
@@ -20,7 +20,9 @@
   "dependencies": {
     "redis": "",
     "node-markdown": "",
-    "async": ""
+    "async": "",
+    "hound": "",
+    "string": ""
   },
   "devDependencies": {
     "vows": ""
