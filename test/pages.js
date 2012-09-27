@@ -69,6 +69,7 @@ vows.describe('Pages System').addBatch({
 					var valid = true;
 					for (var prop in metadata) {
 						if (prop !== 'lastModified' && prop !== 'id' && prop !== 'markdown') {
+							console.log('invalid property:', prop);
 							valid = false;
 							break;
 						}
@@ -118,7 +119,7 @@ vows.describe('Pages System').addBatch({
 						assert.isFalse(fs.existsSync(dir + 'newpage.md'));
 					},
 					
-					'check removed from reed': {
+					'then check if removed from reed': {
 						topic: function() {
 							reed.pages.get('newpage', this.callback);
 						},

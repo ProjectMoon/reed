@@ -171,11 +171,11 @@ Reed exposes the following functions:
 * `list(callback)`: Retrieves all post IDs, sorted by last modified date. The
   callback receives `error` if there was an error, and `titles`, which is a
   list of post IDs.
-* `remove(id, callback)`: Removes a blog post. The callback receives `error`, if
-  an error occurred.
-* `removeAll(callback)`: Removes all blog posts. The callback is called after
-  all posts have been deleted, and receives `error` if there was an error during
-  deletion. **This deletion is not transactional!**
+* `remove(id, callback)`: Removes a blog post from reed and the filesystem.
+  The callback receives `error`, if an error occurred.
+* `removeAll(callback)`: Removes all blog posts from reed and the filesystem.
+  The callback is called after all posts have been deleted, and receives `error`
+  if there was an error during deletion.
   
 **Note**: `get`, `list`, `index`, `remove`, and `removeAll` asynchronously
 block until reed is in a ready state. This means they can be called before
@@ -233,6 +233,18 @@ The pages API is contained within the `pages` namespace:
 * `pages.remove(title, callback)`: Removes the specified page, deleting it from
   Redis and the filesystem.
 * `pages.close()`: Closes the pages portion of reed.
+
+Reed pages exposes the following events:
+
+* `error`: Fired when there is an error in certain internal procedures. Usually,
+  inspecting the error object of callbacks is sufficient.
+* `ready`: Fired when reed has loaded.
+* `add`: Fired when a page is added.
+* `update`: Fired when a page is updated.
+* `remove`: Fired when a page is removed (from the filesystem, through an
+  API call, etc). The callback receives the full path of the file that was
+  removed.
+
 
 Contributors
 ============

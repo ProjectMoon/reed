@@ -15,6 +15,7 @@
 * `reed.removeAll` method is now atomic (Redis MULTI).
 * Method blocking is now much more efficient by using a queue instead of what
   amounted to fancy spinlock.
+* `add`, `update`, and `remove` events for reed pages.
 
 0.9.8
 =====
