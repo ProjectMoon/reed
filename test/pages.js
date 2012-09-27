@@ -95,7 +95,9 @@ vows.describe('Pages System').addBatch({
 					var self = this;
 					fs.writeFile(dir + 'newpage.md', 'This is a new page', function(err) {
 						if (err) return self.callback(err);
-						reed.pages.get('newpage', self.callback);
+						reed.pages.on('add', function(title) {
+							reed.pages.get('newpage', self.callback);
+						});
 					});
 				},
 				
