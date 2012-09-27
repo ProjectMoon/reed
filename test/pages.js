@@ -2,7 +2,6 @@ var	vows = require('vows'),
 	assert = require('assert'),
 	events = require('events'),
 	fs = require('fs'),
-	path = require('path'),
 	reed = require('../lib/reed');
 
 var dir = __dirname + '/.pages/';
@@ -41,7 +40,7 @@ vows.describe('Pages System').addBatch({
 					assert.isObject(metadata);
 				}
 			},
-			
+
 			'get a page with no custom metadata': {
 				topic: function() {
 					reed.pages.get('nometadata', this.callback);
@@ -114,7 +113,7 @@ vows.describe('Pages System').addBatch({
 					},
 					
 					'no longer on filesystem': function(err) {
-						assert.isFalse(path.existsSync(dir + 'newpage.md'));
+						assert.isFalse(fs.existsSync(dir + 'newpage.md'));
 					},
 					
 					'check removed from reed': {
