@@ -108,7 +108,7 @@ vows.describe('Pages System').addBatch({
 						reed.pages.remove('newpage', this.callback);
 					},
 					
-					'check for removal errors': function(err, junk) {
+					'check for removal errors': function(err) {
 						assert.isNull(err);
 					},
 					
