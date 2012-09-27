@@ -21,7 +21,8 @@
     "redis": "",
     "node-markdown": "",
     "async": "",
-    "hound": ""
+    "hound": "",
+    "string": ""
   },
   "devDependencies": {
     "vows": ""
