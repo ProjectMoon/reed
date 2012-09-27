@@ -9,9 +9,9 @@ var dir = __dirname + '/.pages/';
 vows.describe('Pages System').addBatch({
 	'Open Pages,': {
 		topic: function() {
-			reed.pages.open(dir);
 			var self = this;
-			reed.on('pagesReady', function() {
+			reed.pages.open(dir, function(err) {
+				assert.isNull(err);
 				self.callback();
 			});
 		},
